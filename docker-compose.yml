@@ -1,14 +1,17 @@
 services:
   postgres:
     restart: always
-    image: postgres
+    image: ankane/pgvector:latest  # PostgreSQL with pgvector extension preinstalled
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_HOST_AUTH_METHOD: trust
+      POSTGRES_PASSWORD: postgres  # Secure this for production
     networks:
       - pg-net
     ports:
       - "5432:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+
   pgadmin4:
     restart: always
     image: dpage/pgadmin4
@@ -19,6 +22,10 @@ services:
       - pg-net
     ports:
       - "5050:80"
+
 networks:
   pg-net:
     driver: bridge
+
+volumes:
+  pg_data:
