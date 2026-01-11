@@ -1,7 +1,7 @@
 services:
   postgres:
     restart: always
-    image: ankane/pgvector:latest  # PostgreSQL with pgvector extension preinstalled
+    image: ankane/pgvector:pg16  # PostgreSQL with pgvector extension preinstalled
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres  # Secure this for production
