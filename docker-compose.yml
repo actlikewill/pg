@@ -1,7 +1,7 @@
 services:
   postgres:
     restart: always
-    image: ankane/pgvector:pg16  # PostgreSQL with pgvector extension preinstalled
+    image: pgvector/pgvector:0.7.4-pg16
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres  # Secure this for production
@@ -22,6 +22,8 @@ services:
       - pg-net
     ports:
       - "5050:80"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
 networks:
   pg-net:
