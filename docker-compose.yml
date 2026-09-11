@@ -1,7 +1,8 @@
 services:
   postgres:
     restart: always
-    image: pgvector/pgvector:0.7.4-pg16
+    build: .
+    image: local/pgvector-postgis:pg16
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres  # Secure this for production
